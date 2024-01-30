@@ -26,7 +26,7 @@ int main() {
     int odd[5] = { 3, 6, 9, 12, 15 };
 
     int index1 = binarySearch(even, 6, 12);
-    int index2 = binarySearch(odd, 5, 15);
+    int index2 = binarySearch(odd, 5, 12);
     cout << "Index of 12 in even array: " <<  index1 << endl;
-    cout << "Index of 15 in odd array: " <<  index2 << endl;
+    cout << "Index of 12 in odd array: " <<  index2 << endl;
 }
