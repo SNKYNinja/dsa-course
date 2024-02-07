@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int sqrt(int n) {
@@ -54,4 +55,36 @@ int main() {
     cin >> n;
     cout << "Square Root of " << n << ": " << sqrt(n) << endl;
     cout << "Square Root of " << n << "(Precise): " << morePrecision(n, 4, sqrt(n)) << endl;
+
+    // Search in a rotated array (leetcode)
+    // https://leetcode.com/problems/search-in-rotated-sorted-array/solutions/4515706/100-binary-search-solution-s-optimal-solution-s/
+
+    // Alternate Solution
+    // vector<int> arr = { 4, 5, 6, 7, 0, 1, 2 };
+    // int target = 0;
+    // int s = 0;
+    // int e = arr.size();
+    // int mid = s + (e - s) / 2;
+
+    // while (s <= e) {
+    //     if (arr[mid] == target) {
+    //         cout << mid;
+    //     }
+
+    //     if (arr[s] <= arr[mid]) {
+    //         if (arr[s] <= target && arr[mid] >= target) {
+    //             e = mid - 1;
+    //         } else {
+    //             s = mid + 1;
+    //         }
+    //     } else {
+    //         if (arr[mid] <= target && arr[e] >= target) {
+    //             s = mid + 1;
+    //         } else {
+    //             e = mid - 1;
+    //         }
+    //     }
+
+    //     mid = s + (e - s) / 2;
+    // }
 }
