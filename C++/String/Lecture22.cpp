@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int getLength(char str[])
@@ -151,6 +152,151 @@ void replaceSpaces(string &str)
     }
 }
 
+string removeOccurences(string s, string part)
+{
+    // First condition ensures whether the string isn't empty after each iteration
+    // Second condition will not run the loop if the part isn't found
+    // s.find() returns "npos" constant value if the substring is not found, thus the second condition is required
+    while (s.length() != 0 && s.find(part) < s.length())
+    {
+        s.erase(s.find(part), part.length());
+    }
+
+    return s;
+}
+
+// This function is created to check the two counters equality in checkInlcusion() -> Line 180
+bool checkQual(int arr1[26], int arr2[26])
+{
+    for (int i = 0; i < 27; i++)
+    {
+        if (arr1[i] != arr2[i])
+            return 0;
+    }
+
+    return 1;
+}
+
+// Find if any permuation of s1 exists in s2
+bool checkInclusion(string s1, string s2)
+{
+    // This is counter for counting the chars of the s1
+    int count1[26] = {0};
+    // Counter for counting the chars of each "window" of s2
+    int count2[26] = {0};
+    // The two counters will be compared every iteration so that we can compare each window of s2 with s1 string
+    // Counting strategy is used here so as to not worry about the permuation of s1
+
+    // Incrementing the counter 1 for s1
+    for (int i = 0; i < s1.length(); i++)
+    {
+        int index = s1[i] - 'a';
+        count1[index]++;
+    }
+
+    // Starting with first window manually
+    int i = 0;
+    int windowSize = s1.length();
+    // This will create a window of size s1.length() in s2
+    // Second condition ensures the first window does not exceed the s2 string length
+    while (i < windowSize && i < s2.length())
+    {
+        int index = s2[i] - 'a';
+        count2[index]++;
+        i++;
+    }
+
+    // We can just return true directly if the first window passes the test
+    if (checkQual(count1, count2))
+        return 1;
+
+    // Now doing it for the rest of the windows
+    while (i < s2.length())
+    {
+        char oldChar = s2[i - windowSize];
+        int oldIndex = oldChar - 'a';
+        // This removes the old character from the counter
+        // This is done to remove the old element from the window
+        count2[oldIndex]--;
+
+        // After every iteration, the value of "i" is shifted to the next window's new character
+        char newChar = s2[i];
+        int newIndex = newChar - 'a';
+        // This adds the new element to the window
+        count2[newIndex]++;
+
+        i++;
+
+        if (checkQual(count1, count2))
+            return 1;
+    }
+
+    return 0;
+}
+
+string removeDuplicates(string s)
+{
+    string temp = "";
+    int i = 0;
+
+    while (i < s.length())
+    {
+        if (temp.empty() || s[i] != temp.back())
+        {
+            temp.push_back(s[i]);
+        }
+        else
+        {
+            temp.pop_back();
+        }
+
+        i++;
+    }
+
+    return temp;
+}
+
+int compress(vector<char> &chars)
+{
+    // Pointer to traverse the vector
+    int i = 0;
+    // Keeps track of the index
+    int ansIndex = 0;
+    int n = chars.size();
+
+    while (i < n)
+    {
+        // We traverse with another loop from the next element either till the end of the vector or until a new character appears
+        int j = i + 1;
+        while (j < n && chars[i] == chars[j])
+        {
+            j++;
+        }
+
+        // We add the character to the answer vector first
+        chars[ansIndex++] = chars[i];
+        // This will calculate the count of characters
+        int count = j - i;
+
+        if (count > 1)
+        {
+            // Converts the count to string and appends it to the vector
+            string cnt = to_string(count);
+            for (char ch : cnt)
+            {
+                chars[ansIndex++] = ch;
+            }
+        }
+
+        // Now "j" will have the index of the new character
+        // So we will assign "i" the value of j
+        i = j;
+    }
+
+    // Returning the "ansIndex" or chars.size() will be same since we need the new length of the vector
+    return ansIndex;
+}
+
 int main()
 {
     char a = 'Z';
@@ -223,5 +369,17 @@ int main()
 
     // Remove All Occurrences of a Substring
     // https://leetcode.com/problems/remove-all-occurrences-of-a-substring/description/
-    // Solution:
+    // Solution: removeOccurences() -> Line 154
+
+    // Permutation in String
+    // https://leetcode.com/problems/permutation-in-string/description/
+    // Solution: checkInclusion() -> Line 180
+
+    // Remmove all adjacent duplicate
+    // https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
+    // Solution: removeDuplicates() -> Line 236
+
+    // String Compression
+    // https://leetcode.com/problems/string-compression/description/
+    // Solution: compress() -> Line 259
 }
