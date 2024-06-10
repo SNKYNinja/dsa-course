@@ -146,7 +146,7 @@ void replaceSpaces(string &str)
         if (ch == ' ')
         {
             str.replace(i, 1, "@40");
-            i += 3;
+            i += 2;
         }
     }
 }
