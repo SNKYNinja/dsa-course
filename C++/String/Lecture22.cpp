@@ -143,7 +143,6 @@ void replaceSpaces(string &str)
     for (int i = 0; i < str.length(); i++)
     {
         char ch = str[i];
-        cout << ch << endl;
         if (ch == ' ')
         {
             str.replace(i, 1, "@40");
@@ -350,7 +349,7 @@ int main()
 
     // 2. Palindrone
     // https://www.naukri.com/code360/problems/check-if-the-string-is-a-palindrome_1062633
-    // Solution: checkPalindrone() -> Line 55
+    // Solution: checkPalindrone() -> Line 56
 
     // 3. Valid Palindrone
     // https://leetcode.com/problems/valid-palindrome/description/
