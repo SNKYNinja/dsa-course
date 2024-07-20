@@ -30,7 +30,7 @@ int main() {
 
     /*
         1. Encapsulation - Wrapping up data members and member functions
-        (Information Hiding)    
+        (Information Hiding)
         Fully encapsulated class -> All data members are marked private
     */
 
@@ -47,6 +47,24 @@ int main() {
         Private v/s Protected : Access Modifier (NOT Mode of Inheritance)
         1. Both members with this access modifier are not accessible outside the class
         2. But protected members can be accessed by another inherited class
+
+        Types:
+        1. Single Inheritance
+        2. Multi-level Inheritance
+        3. Multiple Inheritance
+        4. Hierarchical Inheritance
+        5. Hybrid Inheritance
+    */
+
+    /*
+        Inheritance Ambiguity:
+        In multiple inheritance, if there are properties and methods that are present
+        in both the class A and class B, then class C can access such data using the 
+        scope resolution operator
+
+        C c;
+        c.A::fn()
+        c.B::fn()
     */
     
     Male someMale;
@@ -57,6 +75,25 @@ int main() {
     cout << someMale.getAge() << endl;
     // Its own members
     someMale.sleep();
+
+
+    /*
+        3. Polymorpherism - Existing in multiple forms
+
+        I. Compile Time Polymorphism
+            Function Overloading
+            Operator Overloading
+        II. Runtime Polymorphism
+            Method Overriding
+            Virtual Functions
+    */
+
+    /*
+        4. Abstraction - Implmenetation hiding and showing only essentials
+        (Implementation hiding)
+
+        It is achieved using Access Specifiers and Modifiers
+    */
 
 
     return 0;
