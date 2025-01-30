@@ -1,27 +1,22 @@
 #include <iostream>
-#include <vector>
 #include <math.h>
+#include <vector>
 using namespace std;
 
 // Sieve of Eratosthenes
-vector<int> sieve(int n)
-{
+vector<int> sieve(int n) {
     vector<bool> isPrime(n + 1, true);
     vector<int> primes;
-    for (int i = 2; i < n; i++)
-    {
-        if (isPrime[i])
-        {
+    for (int i = 2; i < n; i++) {
+        if (isPrime[i]) {
             primes.push_back(i);
 
-            for (int j = 2 * i; j <= n; j += i)
-            {
+            for (int j = 2 * i; j <= n; j += i) {
                 isPrime[j] = false;
             }
         }
     }
-    for (auto p : primes)
-    {
+    for (auto p : primes) {
         cout << p << " ";
     }
 
@@ -30,8 +25,7 @@ vector<int> sieve(int n)
 }
 
 // Segmented Sieve
-void segSieve(int l, int h)
-{
+void segSieve(int l, int h) {
     if (l < 2)
         l = 2;
     vector<int> prime = sieve(floor(sqrt(h)));
@@ -41,57 +35,49 @@ void segSieve(int l, int h)
     vector<int> isPrime(h - l + 1, true);
 
     // Iterate over the primes we got earlier
-    for (int p : prime)
-    {
+    for (int p : prime) {
         // sm is the smallest multiple of p in the range
         // We need sm so that we can start falsing the multiple of p in isPrime
         int sm = (l / p) * p;
-        if (sm < l)
-        {
+        if (sm < l) {
             // This will bring sm in range if its not in already
             sm += p;                               // INITIAL
             sm += max(p * p, (l + p - 1) / p * p); // DID NOT UNDERSTAND
         }
 
         // We iterate over all the multiples and mark them false
-        for (int m = sm; m <= h; m += p)
-        {
+        for (int m = sm; m <= h; m += p) {
             isPrime[m - l] = false;
         }
     }
 
     // Now we will create an array with the prime numbers required
-    for (int i = l; i <= h; i++)
-    {
-        if (isPrime[i - l])
-        {
+    for (int i = l; i <= h; i++) {
+        if (isPrime[i - l]) {
             cout << i << " ";
         }
     }
     cout << endl;
 }
 
-int countPrimes(int n)
-{
+int countPrimes(int n) {
     int count = 0;
-    // Since we are using the index of the vector for the numbers which are all set as prime
-    // for now, we will put n+1 for the number of elements therefore making the vector ranging
-    // from 0 to n
+    // Since we are using the index of the vector for the numbers which are all
+    // set as prime for now, we will put n+1 for the number of elements
+    // therefore making the vector ranging from 0 to n
     vector<bool> prime(n + 1, true);
     prime[0] = prime[1] = false;
 
-    for (int i = 2; i < n; i++)
-    {
-        if (prime[i])
-        {
+    for (int i = 2; i < n; i++) {
+        if (prime[i]) {
             count++;
 
-            // Here j = 2 * i because we need to go the second element of i's table i.e i x 2
-            // Incrementing j by i is done as the table of a number progresses by adding the
-            // number itself
-            for (int j = 2 * i; j < n; j += i)
-            {
-                // We set this number as non prime since it comes in the table of i
+            // Here j = 2 * i because we need to go the second element of i's
+            // table i.e i x 2 Incrementing j by i is done as the table of a
+            // number progresses by adding the number itself
+            for (int j = 2 * i; j < n; j += i) {
+                // We set this number as non prime since it comes in the table
+                // of i
                 prime[j] = false;
             }
         }
@@ -101,8 +87,7 @@ int countPrimes(int n)
 }
 
 // Greatest Common Divisor
-int gcd(int a, int b)
-{
+int gcd(int a, int b) {
     // Iterative Method
     // if (a == 0)
     //     return b;
@@ -136,8 +121,7 @@ int gcd(int a, int b)
 }
 
 // Fast Exponentiation
-int exponentiation(long long a, int b)
-{
+int exponentiation(long long a, int b) {
     const int MOD = 1e9 + 7; // IMPORTANT
 
     if (b == 0)
@@ -146,8 +130,7 @@ int exponentiation(long long a, int b)
     // Iterative Method
     int result = 1;
     //
-    while (b > 0)
-    {
+    while (b > 0) {
         // Check if the least significant bit of b is 1 (i.e., b is odd)
         if (b & 1)
             result = result * a; // Multiply the current result by a
@@ -155,8 +138,9 @@ int exponentiation(long long a, int b)
         // Square the base a for the next iteration
         a = a * a;
 
-        // Right shift b by 1 bit (equivalent to dividing b by 2 and discarding the remainder)
-        // This effectively reduces the power we are raising a to in the next iteration
+        // Right shift b by 1 bit (equivalent to dividing b by 2 and discarding
+        // the remainder) This effectively reduces the power we are raising a to
+        // in the next iteration
         b = b >> 1;
     }
 
@@ -177,15 +161,13 @@ int exponentiation(long long a, int b)
 }
 
 // Recursive Factorial
-int factorial(int n)
-{
+int factorial(int n) {
     if (n == 0 || n == 1)
         return 1;
     return n * factorial(n - 1);
 }
 
-int main()
-{
+int main() {
     // Sieve of Eratosthenes
     // https://leetcode.com/problems/count-primes/description/
     // Solution: countPrimes() -> Line 5
