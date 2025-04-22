@@ -2,27 +2,22 @@
 using namespace std;
 
 class Human {
-    private:
-        int age;
-        int height;
-        int weight;
-    public:
-    void setAge(int age) {
-        this->age = age;
-    }
-    int getAge() {
-        return age;
-    }
+  private:
+    int age;
+    int height;
+    int weight;
+
+  public:
+    void setAge(int age) { this->age = age; }
+    int getAge() { return age; }
 };
 
-class Male: public Human {
-    private:
-        string gender = "Male";
-    public:
-        void sleep() {
-            cout << gender << " is sleeping!" << endl;
-        }
-        
+class Male : public Human {
+  private:
+    string gender = "Male";
+
+  public:
+    void sleep() { cout << gender << " is sleeping!" << endl; }
 };
 
 int main() {
@@ -59,14 +54,14 @@ int main() {
     /*
         Inheritance Ambiguity:
         In multiple inheritance, if there are properties and methods that are present
-        in both the class A and class B, then class C can access such data using the 
+        in both the class A and class B, then class C can access such data using the
         scope resolution operator
 
         C c;
         c.A::fn()
         c.B::fn()
     */
-    
+
     Male someMale;
 
     // We are able to access both the parent and child's members
@@ -75,7 +70,6 @@ int main() {
     cout << someMale.getAge() << endl;
     // Its own members
     someMale.sleep();
-
 
     /*
         3. Polymorpherism - Existing in multiple forms
@@ -94,7 +88,6 @@ int main() {
 
         It is achieved using Access Specifiers and Modifiers
     */
-
 
     return 0;
 }

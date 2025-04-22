@@ -22,8 +22,7 @@ int getSize(Node* head) {
 }
 
 Node* kReverse(Node* head, int k) {
-    if (head == NULL || getSize(head) < k)
-        return head;
+    if (head == NULL || getSize(head) < k) return head;
 
     Node *curr = head, *prev = NULL, *next = NULL;
     int count = 0;
