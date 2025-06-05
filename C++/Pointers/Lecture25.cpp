@@ -8,7 +8,7 @@ int main() {
     // cout << &num << endl;
 
     // Pointer: Stores addresses
-    int *ptr = &num;
+    int* ptr = &num;
     cout << ptr << endl;
 
     // * -> deference operator
@@ -24,14 +24,14 @@ int main() {
     // cout << i << endl;
 
     // Copying Pointers
-    int *ptr2 = ptr;
+    int* ptr2 = ptr;
     cout << "Pointer 1: " << ptr << endl;
     cout << "Pointer 2: " << ptr2 << endl;
-    
+
     // Double pointer
     int j = 10;
-    int *p1 = &j;
-    int **p2 = &p1;
+    int* p1 = &j;
+    int** p2 = &p1;
     // j = *p1 = **p2
 
     // Dangling Pointer
@@ -50,7 +50,7 @@ int main() {
     int a[] = {1, 2, 3, 4};
     // a = &a[0]
 
-    cout << *(a) << " " << *(a+1) << endl;
+    cout << *(a) << " " << *(a + 1) << endl;
     // *(a) -> a[0]
     // *(a + 1) -> a[1]
     // arr[i] = *(arr + i)
@@ -58,10 +58,11 @@ int main() {
     // arr[i] = i[arr] = *(arr + i) = *(i + arr)
 
     char ch[6] = "abcde";
-    char *c = &ch[0];
-    // when printing char* it prints the string starting from the pointer until it encounters the null terminator.
+    char* c = &ch[0];
+    // when printing char* it prints the string starting from the pointer until it encounters the
+    // null terminator.
     cout << c << endl;
 
-   // Practice Questions
-   // https://www.naukri.com/code360/guided-paths/pointers
+    // Practice Questions
+    // https://www.naukri.com/code360/guided-paths/pointers
 }

@@ -1,12 +1,10 @@
-#include <iostream>
-#include <cmath>
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
     // Leetcode Questions
 
     // Q1. https://leetcode.com/problems/reverse-integer/
-
 
     // Q2. https://leetcode.com/problems/complement-of-base-10-integer/description/
     int n;
