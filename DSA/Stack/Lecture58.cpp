@@ -61,13 +61,13 @@ int main() {
     st.push(10, 1);
     st.push(20, 1);
 
-    st.push(4, 4);
+    st.push(4, 2);
     st.push(3, 3);
-    st.push(2, 4);
+    st.push(2, 2);
 
     cout << st.pop(1) << endl;
-    st.push(5, 4);
-    st.push(6, 4);
+    st.push(5, 2);
+    st.push(6, 2);
 
     st.print();
 }

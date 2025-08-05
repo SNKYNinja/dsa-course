@@ -93,6 +93,7 @@ void sortStack(stack<int>& st) {
 bool isOperator(char ch) {
     return ch == '+' || ch == '-' || ch == '*' || ch == '/';
 }
+
 bool redundantBracket(string s) {
     stack<char> st;
 
